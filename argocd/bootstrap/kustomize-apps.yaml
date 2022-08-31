@@ -7,12 +7,11 @@ spec:
   generators:
   - list:
       elements:
-      - env: dev
-      - env: pre
-      - env: prod
+      - env: green
+      - env: blue
   template:
     metadata:
-      name: 'kustomize-{{env}}-helloworld'
+      name: 'kustomize-{{env}}-bgd'
     spec:
       project: default
       syncPolicy:
@@ -20,9 +19,9 @@ spec:
           prune: true
           selfHeal: true
       source:
-        repoURL: 'https://github.com/dbgjerez/kustomize-vs-helm.git'
-        targetRevision: HEAD
-        path: 'argocd/applications/kustomize/overlays/{{env}}'
+        repoURL: 'https://gitlab.consulting.redhat.com/iberia-consulting/sabadell/sabadell-ibm/workshops/gitops/gitops-examples.git'
+        targetRevision: demo
+        path: 'bgdk/overlays/{{env}}'
       destination:
-        namespace: '{{env}}-helm'
-        server: 'https://kubernetes.default.svc'
+        namespace: '{{env}}-kustomize'
+        # server: 'https://kubernetes.default.svc'
