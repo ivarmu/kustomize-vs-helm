@@ -20,7 +20,7 @@ spec:
           selfHeal: true
       source:
         repoURL: 'https://gitlab.consulting.redhat.com/iberia-consulting/sabadell/sabadell-ibm/workshops/gitops/gitops-examples.git'
-        targetRevision: demo
+        targetRevision: gitlabactions
         path: 'bgdk/overlays/{{ env }}'
       destination:
         namespace: 'bgd-{{ env }}'
