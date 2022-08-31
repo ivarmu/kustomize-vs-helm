@@ -24,4 +24,4 @@ spec:
         path: 'bgdk/overlays/{{env}}'
       destination:
         namespace: '{{env}}-kustomize'
-        # server: 'https://kubernetes.default.svc'
+        server: 'https://kubernetes.default.svc'
