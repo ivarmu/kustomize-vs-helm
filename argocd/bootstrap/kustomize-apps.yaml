@@ -11,7 +11,7 @@ spec:
       - env: blue
   template:
     metadata:
-      name: 'kustomize-{{env}}-bgd'
+      name: 'kustomize-{{ env }}-bgd'
     spec:
       project: default
       syncPolicy:
@@ -21,7 +21,7 @@ spec:
       source:
         repoURL: 'https://gitlab.consulting.redhat.com/iberia-consulting/sabadell/sabadell-ibm/workshops/gitops/gitops-examples.git'
         targetRevision: demo
-        path: 'bgdk/overlays/{{env}}'
+        path: 'bgdk/overlays/{{ env }}'
       destination:
-        namespace: '{{env}}-kustomize'
+        namespace: 'bgd-{{ env }}'
         server: 'https://kubernetes.default.svc'
