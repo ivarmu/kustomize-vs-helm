@@ -25,7 +25,8 @@ spec:
         path: 'bgdk/overlays/{{ env }}'
       destination:
         namespace: 'bgd-{{ env }}'
-        server: 'https://kubernetes.default.svc'
+        # server: 'https://kubernetes.default.svc'
+        server: 'https://api.cluster-xv94f.xv94f.sandbox1904.opentlc.com:6443'
 ...
 ---
 apiVersion: argoproj.io/v1alpha1
