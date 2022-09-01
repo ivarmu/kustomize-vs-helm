@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: kustomize-bootstrap
+  name: kustomize-bootstrap-bgd
   namespace: openshift-gitops
 spec:
   generators:
@@ -26,6 +26,7 @@ spec:
       destination:
         namespace: 'bgd-{{ env }}'
         server: 'https://kubernetes.default.svc'
+...
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -55,3 +56,4 @@ spec:
       destination:
         namespace: '{{env}}-helm'
         server: 'https://kubernetes.default.svc'
+...
