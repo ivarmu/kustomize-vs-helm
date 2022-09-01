@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: kustomize-bootstrap-bgd
-  namespace: 'bgd-{{ env }}'
+  namespace: 'bgd'
 spec:
   generators:
   - list:
@@ -13,6 +13,7 @@ spec:
   template:
     metadata:
       name: 'kustomize-{{ env }}-bgd'
+      namespace: 'bgd-{{ env }}'
     spec:
       project: default
       syncPolicy:
