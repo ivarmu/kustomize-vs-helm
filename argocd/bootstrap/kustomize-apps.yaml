@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -24,4 +25,33 @@ spec:
         path: 'bgdk/overlays/{{ env }}'
       destination:
         namespace: 'bgd-{{ env }}'
+        server: 'https://kubernetes.default.svc'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: kustomize-bootstrap
+  namespace: openshift-gitops
+spec:
+  generators:
+  - list:
+      elements:
+      - env: dev
+      - env: pre
+      - env: prod
+  template:
+    metadata:
+      name: 'kustomize-{{env}}-helloworld'
+    spec:
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: 'https://github.com/dbgjerez/kustomize-vs-helm.git'
+        targetRevision: HEAD
+        path: 'argocd/applications/kustomize/overlays/{{env}}'
+      destination:
+        namespace: '{{env}}-helm'
         server: 'https://kubernetes.default.svc'
